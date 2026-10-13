@@ -1,0 +1,17 @@
+{
+  "state": "building",
+  "iteration": 0,
+  "northStar": "Search and AI-agent visits to the site grow beyond the weekly noise band, and every change that caused growth is recorded in a public ledger.",
+  "constraint": "Cloudflare primitives only. No Google tools or third-party scripts. A person starts every iteration.",
+  "falsifiable": "A single agent-proposed change, measured against a control group of unchanged pages, moves the target metric by more than the noise band.",
+  "proven": [],
+  "unproven": [
+    "Cloudflare-native data is enough to measure SEO changes without Search Console",
+    "Internal cross-links on /prompts/* raise pages per visit and crawler coverage (experiment 001)"
+  ],
+  "disproven": [],
+  "openQuestions": [
+    "Is the noise band on a low-traffic site small enough to detect a single change in 14 days?",
+    "Do AI crawler visits respond to the same changes as search crawler visits?"
+  ]
+}
