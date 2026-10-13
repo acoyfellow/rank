@@ -11,7 +11,7 @@
     "exactOptionalPropertyTypes": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["bun"]
+    "types": ["bun", "@cloudflare/workers-types"]
   },
-  "include": ["src/**/*", "server/**/*", "scripts/**/*", "rank.config.ts"]
+  "include": ["src/**/*", "server/**/*", "scripts/**/*", "worker/**/*", "rank.config.ts"]
 }

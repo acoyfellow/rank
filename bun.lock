@@ -13,6 +13,7 @@
         "foldkit": "0.168.0",
       },
       "devDependencies": {
+        "@cloudflare/workers-types": "^5.20261013.1",
         "@foldkit/devtools": "0.168.0",
         "@foldkit/devtools-mcp": "0.24.1",
         "@foldkit/oxlint-plugin": "0.15.3",
@@ -30,6 +31,8 @@
     },
   },
   "packages": {
+    "@cloudflare/workers-types": ["@cloudflare/workers-types@5.20261013.1", "", {}, "sha512-0SfkM/MA+oSIAzFFmjr0wZLH54oeCtugaOn8GpJDBnerQiML+rOPq2W6j6bBGE51o+N4DOd0tvMruLmkAQzlpw=="],
+
     "@effect/platform-browser": ["@effect/platform-browser@4.0.0", "", { "peerDependencies": { "effect": "^4.0.0" } }, "sha512-OHo7EPpF3RVPiI+mjoU9yd05LdCdKPjzDXqs5wRgF9CsdVvwN76B0zgt54DxPUcvMYri1tVJOtLCVnK0tRkNQQ=="],
 
     "@effect/platform-node": ["@effect/platform-node@4.0.0", "", { "dependencies": { "@effect/platform-node-shared": "^4.0.0", "undici": "^8.11.2" }, "peerDependencies": { "effect": "^4.0.0", "redis": ">=5.0.0 <7.0.0" } }, "sha512-/L+4MUbl8FejPKLHLROYSOebvHnfixkP8KiblSD/DE5uH5xENZBHaux4nH6XMnRP+lr8ajpEJFS8sUrmmxFJeQ=="],
