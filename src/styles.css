@@ -1,1 +1,8 @@
 @import 'tailwindcss';
+
+@theme {
+  --color-ink: #111111;
+  --color-paper: #f3f0e8;
+  --color-signal: #f6821f;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}

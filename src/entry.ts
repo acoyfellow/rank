@@ -1,13 +1,6 @@
 import { Runtime } from 'foldkit'
 
-import { registerEcharts } from './echarts'
-import { init } from './init'
-import { Message } from './message'
-import { Model } from './model'
-import { update } from './update'
-import { view } from './view/index'
-
-registerEcharts()
+import { Message, Model, init, update, view } from './main'
 
 const application = Runtime.makeApplication({
   Model,
@@ -15,9 +8,7 @@ const application = Runtime.makeApplication({
   update,
   view,
   container: document.getElementById('root'),
-  devTools: {
-    Message,
-  },
+  devTools: { Message },
 })
 
 Runtime.run(application)

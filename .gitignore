@@ -30,3 +30,4 @@ Thumbs.db
 # Local
 .alchemy/
 .dev.vars
+public/data.json
