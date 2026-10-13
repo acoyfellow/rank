@@ -11,7 +11,9 @@
     "test": "vitest run",
     "lint": "oxlint src",
     "verify": "bun scripts/verify.ts",
-    "iterate": "bun scripts/iterate.ts"
+    "iterate": "bun scripts/iterate.ts",
+    "deploy": "bun run build && alchemy deploy",
+    "destroy": "alchemy destroy"
   },
   "dependencies": {
     "@effect/platform-browser": "4.0.0",
@@ -29,6 +31,7 @@
     "@foldkit/vite-plugin": "0.27.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/bun": "^1.4.3",
+    "alchemy": "0.87.0",
     "happy-dom": "^20.14.5",
     "oxfmt": "^0.66.0",
     "oxlint": "^1.85.0",
