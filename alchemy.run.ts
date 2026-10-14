@@ -19,7 +19,7 @@ export const worker = await Worker('rank', {
   entrypoint: './worker/index.ts',
   compatibilityDate: '2026-10-13',
   url: false,
-  routes: [{ pattern: `${rankConfig.host}/seo*`, zoneId: required('RANK_ZONE_ID') }],
+  routes: [{ pattern: `${rankConfig.host}/rank*`, zoneId: required('RANK_ZONE_ID') }],
   bindings: {
     ASSETS: assets,
     SNAPSHOTS: snapshots,
@@ -29,6 +29,6 @@ export const worker = await Worker('rank', {
   },
 })
 
-console.log(`rank worker deployed for ${rankConfig.site}/seo`)
+console.log(`rank worker deployed for ${rankConfig.site}/rank`)
 
 await app.finalize()

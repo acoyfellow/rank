@@ -4,8 +4,8 @@ import { foldkit } from '@foldkit/vite-plugin'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/seo/',
-  build: { outDir: 'dist/seo' },
+  base: '/rank/',
+  build: { outDir: 'dist/rank' },
   plugins: [tailwindcss(), foldkit()],
   optimizeDeps: {
     entries: ['src/entry.ts'],

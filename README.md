@@ -2,6 +2,8 @@
 
 An agentic SEO loop that runs on your own Cloudflare account.
 
+Live on coey.dev: https://coey.dev/rank
+
 ## The problem
 
 Search tools tell you what happened. They do not change your site, and they do not tell you

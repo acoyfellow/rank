@@ -18,7 +18,7 @@ export const Message = defineMessageUnion({
 })
 export type Message = typeof Message.Type
 
-const DATA_URL = '/seo/data.json'
+const DATA_URL = '/rank/data.json'
 const REPO_URL = 'https://github.com/acoyfellow/rank'
 const MAX_BAR_ROWS = 8
 

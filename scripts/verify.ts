@@ -28,8 +28,8 @@ const run = async (cmd: string[]) => {
 };
 
 const fetchPublicData = async () => {
-  const res = await fetch(`${SITE}/seo/data.json`);
-  if (!res.ok) throw new Error(`${SITE}/seo/data.json returned ${res.status}`);
+  const res = await fetch(`${SITE}/rank/data.json`);
+  if (!res.ok) throw new Error(`${SITE}/rank/data.json returned ${res.status}`);
   return { text: await res.text() };
 };
 
@@ -63,8 +63,8 @@ const checks: Check[] = [
   {
     name: 'dashboard page',
     run: async () => {
-      const res = await fetch(`${SITE}/seo`);
-      return res.ok ? null : `${SITE}/seo returned ${res.status}`;
+      const res = await fetch(`${SITE}/rank`);
+      return res.ok ? null : `${SITE}/rank returned ${res.status}`;
     },
   },
   {

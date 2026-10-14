@@ -60,7 +60,7 @@ const json = (body: string) =>
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext) {
     const url = new URL(request.url)
-    if (url.pathname === '/seo/data.json') return json(await readSnapshot(env, ctx))
+    if (url.pathname === '/rank/data.json') return json(await readSnapshot(env, ctx))
     return env.ASSETS.fetch(request)
   },
 } satisfies ExportedHandler<Env>
