@@ -1,0 +1,19 @@
+{
+  "id": "001",
+  "title": "Related prompts on every prompt page",
+  "hypothesis": "Five Clef-ranked related prompt links on each prompt page raise human page views per prompt page, compared with the five prompts that no other page links to.",
+  "metric": "human page views per /prompts/* page per window",
+  "target": "treated pages grow at least 20% more than control pages",
+  "group": "prompts",
+  "treated": ["/prompts/*"],
+  "control": [
+    "/prompts/be-concise",
+    "/prompts/cracked-out",
+    "/prompts/inbox-dog",
+    "/prompts/philosophy",
+    "/prompts/write-prd-ts"
+  ],
+  "windowDays": 14,
+  "commit": "0726bb2",
+  "commitDate": "2026-10-13T10:47:12Z"
+}

@@ -21,7 +21,7 @@ export const experiments: ReadonlyArray<Experiment> = [
       'Five Clef-ranked related prompt links on each prompt page raise human page views per prompt page and verified crawler requests to /prompts/*, compared with the five prompts that no other page links to.',
     metric: 'human page views per /prompts/* page per week',
     commit: '0726bb2',
-    commitDate: '2026-10-13T10:40:00Z',
+    commitDate: '2026-10-13T10:47:12Z',
     windowDays: 14,
     treated: ['/prompts/*'],
     control: [

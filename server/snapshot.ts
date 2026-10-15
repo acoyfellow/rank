@@ -6,7 +6,7 @@ const DAY_MS = 86_400_000
 const WINDOW_DAYS = 7
 const MIN_PUBLIC_COUNT = 5
 const TOP_ROWS = 15
-const NOISE_PREFIXES = ['/cdn-cgi/', '/_app/', '/wp-', '/secure', '/admin']
+const NOISE_PREFIXES = ['/cdn-cgi/', '/_app/', '/__vite', '/@fs/', '/wp-', '/secure', '/admin']
 const NOISE_PARTS = ['/.env']
 const NOISE_EXTENSION = new RegExp('[.](js|css|svg|png|ico|woff2?|map|xml|txt|php)$')
 
@@ -109,7 +109,7 @@ const snapshotQuery = (zoneId: string, accountId: string, host: string) => {
   return `{viewer{
     zones(filter:{zoneTag:"${zoneId}"}){
       paths:httpRequestsAdaptiveGroups(limit:500,filter:{${adaptive},requestSource:"eyeball"},orderBy:[count_DESC]){count dimensions{clientRequestPath verifiedBotCategory}}
-      status:httpRequestsAdaptiveGroups(limit:20,filter:{${adaptive}},orderBy:[count_DESC]){count dimensions{edgeResponseStatus cacheStatus}}
+      status:httpRequestsAdaptiveGroups(limit:20,filter:{${adaptive},requestSource:"eyeball"},orderBy:[count_DESC]){count dimensions{edgeResponseStatus cacheStatus}}
       dns:dnsAnalyticsAdaptiveGroups(limit:20,filter:{date_geq:"${from}",date_leq:"${to}"},orderBy:[count_DESC]){count dimensions{queryType responseCode}}
       days:httpRequests1dGroups(limit:10,filter:{date_geq:"${from}",date_leq:"${to}"},orderBy:[date_ASC]){dimensions{date} sum{pageViews countryMap{clientCountryName requests}}}
     }

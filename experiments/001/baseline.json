@@ -1,0 +1,81 @@
+{
+  "experiment": "001",
+  "phase": "baseline",
+  "metric": "human page views per /prompts/* page per window",
+  "windowStart": "2026-09-29",
+  "windowEnd": "2026-10-12",
+  "windowDays": 14,
+  "frozenAt": "2026-10-15T12:41:52.532Z",
+  "rows": [
+    {
+      "path": "/prompts/sink-deeper/__data.json",
+      "count": 52,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/innovation-catalyst",
+      "count": 38,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/sink-deeper",
+      "count": 38,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/luxury-experience",
+      "count": 32,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/cracked-out/__data.json",
+      "count": 32,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/code-review-arsenal",
+      "count": 30,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/grill-me",
+      "count": 30,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/effect-first",
+      "count": 28,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/uncompromised-design",
+      "count": 25,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/product-building-guidelines",
+      "count": 23,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/avoid-feature-creep",
+      "count": 22,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts/write-prd-ts",
+      "count": 56,
+      "arm": "control"
+    },
+    {
+      "path": "/prompts/cracked-out",
+      "count": 24,
+      "arm": "control"
+    },
+    {
+      "path": "/prompts/be-concise",
+      "count": 21,
+      "arm": "control"
+    }
+  ]
+}
