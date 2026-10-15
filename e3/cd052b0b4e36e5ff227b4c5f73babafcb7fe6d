@@ -1,0 +1,25 @@
+experiments/006/baseline.json
+  s_2065c5125668b9::t_fa924302e9bd1b 1-86
+experiments/006/experiment.json
+  s_2065c5125668b9::t_500081af40a4ce 1-13
+experiments/006/research.md
+  s_2065c5125668b9::t_797be27c345258 1-16
+server/ledger.ts
+  s_2065c5125668b9::t_c64ff5dfed2569 145-159
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e3cd052b0b4e36e5ff227b4c5f73babafcb7fe6d",
+  "prompts": {},
+  "sessions": {
+    "s_2065c5125668b9": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a11c9e-fbb7-7768-b17a-0b53daf78bb6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
