@@ -1,0 +1,116 @@
+{
+  "experiment": "004",
+  "phase": "baseline",
+  "metric": "human page views per window on the 14 newly listed posts",
+  "windowStart": "2026-10-01",
+  "windowEnd": "2026-10-14",
+  "windowDays": 14,
+  "frozenAt": "2026-10-15T13:00:01.426Z",
+  "rows": [
+    {
+      "path": "/agentic-architecture",
+      "count": 93,
+      "arm": "treated"
+    },
+    {
+      "path": "/ditto",
+      "count": 86,
+      "arm": "treated"
+    },
+    {
+      "path": "/blaze",
+      "count": 72,
+      "arm": "treated"
+    },
+    {
+      "path": "/workflow-live",
+      "count": 58,
+      "arm": "treated"
+    },
+    {
+      "path": "/ralph-wiggum",
+      "count": 38,
+      "arm": "treated"
+    },
+    {
+      "path": "/remote-stack",
+      "count": 37,
+      "arm": "treated"
+    },
+    {
+      "path": "/gateproof",
+      "count": 34,
+      "arm": "treated"
+    },
+    {
+      "path": "/constraints-not-loops",
+      "count": 32,
+      "arm": "treated"
+    },
+    {
+      "path": "/cache-sync",
+      "count": 29,
+      "arm": "treated"
+    },
+    {
+      "path": "/think-in-loops",
+      "count": 27,
+      "arm": "treated"
+    },
+    {
+      "path": "/tiny",
+      "count": 27,
+      "arm": "treated"
+    },
+    {
+      "path": "/email-agents",
+      "count": 27,
+      "arm": "treated"
+    },
+    {
+      "path": "/trust-broker",
+      "count": 24,
+      "arm": "treated"
+    },
+    {
+      "path": "/bio",
+      "count": 63,
+      "arm": "control"
+    },
+    {
+      "path": "/agents-patterns",
+      "count": 62,
+      "arm": "control"
+    },
+    {
+      "path": "/edgewire",
+      "count": 57,
+      "arm": "control"
+    },
+    {
+      "path": "/campfire",
+      "count": 57,
+      "arm": "control"
+    },
+    {
+      "path": "/userdo",
+      "count": 52,
+      "arm": "control"
+    },
+    {
+      "path": "/firestore-agents",
+      "count": 51,
+      "arm": "control"
+    },
+    {
+      "path": "/video-to-ascii",
+      "count": 49,
+      "arm": "control"
+    },
+    {
+      "path": "/agentcast",
+      "count": 45,
+      "arm": "control"
+    }
+  ]
+}
