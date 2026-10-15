@@ -127,4 +127,19 @@ export const experiments: ReadonlyArray<Experiment> = [
     after: { from: '2026-10-15', to: '2026-10-28' },
     verdict: 'open',
   },
+  {
+    id: '005',
+    title: 'Resources hub: specific meta and sitemap entry',
+    hypothesis:
+      'Giving /resources a specific title and description, and listing /resources and /research in sitemap.xml, raises human page views on those two hubs, compared with hub pages that did not change.',
+    metric: 'human page views per window on /resources and /research',
+    commit: '63e5247',
+    commitDate: '2026-10-15T16:54:52Z',
+    windowDays: 14,
+    treated: ['/resources', '/research'],
+    control: ['/about', '/bio', '/agents-patterns'],
+    baseline: { from: '2026-10-01', to: '2026-10-14' },
+    after: { from: '2026-10-15', to: '2026-10-28' },
+    verdict: 'open',
+  },
 ]

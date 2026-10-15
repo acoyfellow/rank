@@ -1,0 +1,36 @@
+{
+  "experiment": "005",
+  "phase": "baseline",
+  "metric": "human page views per window on /resources and /research",
+  "windowStart": "2026-10-01",
+  "windowEnd": "2026-10-14",
+  "windowDays": 14,
+  "frozenAt": "2026-10-15T16:56:44.759Z",
+  "rows": [
+    {
+      "path": "/resources",
+      "count": 450,
+      "arm": "treated"
+    },
+    {
+      "path": "/research",
+      "count": 90,
+      "arm": "treated"
+    },
+    {
+      "path": "/about",
+      "count": 323,
+      "arm": "control"
+    },
+    {
+      "path": "/bio",
+      "count": 63,
+      "arm": "control"
+    },
+    {
+      "path": "/agents-patterns",
+      "count": 62,
+      "arm": "control"
+    }
+  ]
+}

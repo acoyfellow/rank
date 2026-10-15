@@ -1,0 +1,13 @@
+{
+  "id": "005",
+  "title": "Resources hub: specific meta and sitemap entry",
+  "hypothesis": "Giving /resources a specific title and description, and listing /resources and /research in sitemap.xml, raises human page views on those two hubs, compared with hub pages that did not change.",
+  "metric": "human page views per window on /resources and /research",
+  "target": "treated hubs grow at least 20% more than control hubs",
+  "group": "resources-hub",
+  "treated": ["/resources", "/research"],
+  "control": ["/about", "/bio", "/agents-patterns"],
+  "windowDays": 14,
+  "commit": "63e5247",
+  "commitDate": "2026-10-15T16:54:52Z"
+}
