@@ -142,4 +142,19 @@ export const experiments: ReadonlyArray<Experiment> = [
     after: { from: '2026-10-15', to: '2026-10-28' },
     verdict: 'open',
   },
+  {
+    id: '006',
+    title: 'Read next links from high-traffic posts',
+    hypothesis:
+      'Adding a Read next block with three related post links to /entropy-wall, /whos-driving and /liquid-primitives raises human page views on the nine linked posts, compared with posts of similar traffic that get no new inbound links.',
+    metric: 'human page views per window on the nine linked-to posts',
+    commit: 'afd53cf',
+    commitDate: '2026-10-15T21:08:52Z',
+    windowDays: 14,
+    treated: ['/worms-history', '/algorithmic-press', '/durable-objects-gotchas', '/preflight', '/fleet-pattern', '/cf-tutorial', '/checkout-reality', '/loop-demo', '/effect-taggederror'],
+    control: ['/loop', '/compaction', '/effect-first', '/casa-tier-2', '/deja', '/promptlog'],
+    baseline: { from: '2026-10-01', to: '2026-10-14' },
+    after: { from: '2026-10-15', to: '2026-10-28' },
+    verdict: 'open',
+  },
 ]

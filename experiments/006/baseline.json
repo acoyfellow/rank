@@ -1,0 +1,86 @@
+{
+  "experiment": "006",
+  "phase": "baseline",
+  "metric": "human page views per window on the nine linked-to posts",
+  "windowStart": "2026-10-01",
+  "windowEnd": "2026-10-14",
+  "windowDays": 14,
+  "frozenAt": "2026-10-15T21:11:19.576Z",
+  "rows": [
+    {
+      "path": "/worms-history",
+      "count": 283,
+      "arm": "treated"
+    },
+    {
+      "path": "/cf-tutorial",
+      "count": 64,
+      "arm": "treated"
+    },
+    {
+      "path": "/checkout-reality",
+      "count": 54,
+      "arm": "treated"
+    },
+    {
+      "path": "/effect-taggederror",
+      "count": 54,
+      "arm": "treated"
+    },
+    {
+      "path": "/fleet-pattern",
+      "count": 49,
+      "arm": "treated"
+    },
+    {
+      "path": "/algorithmic-press",
+      "count": 48,
+      "arm": "treated"
+    },
+    {
+      "path": "/durable-objects-gotchas",
+      "count": 46,
+      "arm": "treated"
+    },
+    {
+      "path": "/loop-demo",
+      "count": 42,
+      "arm": "treated"
+    },
+    {
+      "path": "/preflight",
+      "count": 42,
+      "arm": "treated"
+    },
+    {
+      "path": "/casa-tier-2",
+      "count": 79,
+      "arm": "control"
+    },
+    {
+      "path": "/effect-first",
+      "count": 76,
+      "arm": "control"
+    },
+    {
+      "path": "/compaction",
+      "count": 61,
+      "arm": "control"
+    },
+    {
+      "path": "/loop",
+      "count": 59,
+      "arm": "control"
+    },
+    {
+      "path": "/promptlog",
+      "count": 58,
+      "arm": "control"
+    },
+    {
+      "path": "/deja",
+      "count": 57,
+      "arm": "control"
+    }
+  ]
+}
