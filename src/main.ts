@@ -279,13 +279,16 @@ const overviewChart = (experiments: ReadonlyArray<Experiment>, h: HtmlBuilder<Me
     )
   }
   const legend = series.map(entry => {
-    const latest = entry.points.at(-1)?.index ?? 100
-    const delta = latest - 100
+    const lift = liftOf(entry.experiment.daily ?? [], entry.experiment.commitDate)
+    const status =
+      lift.liftPercent === null
+        ? 'baseline only'
+        : `${lift.liftPercent > 0 ? '+' : ''}${lift.liftPercent}% after ${lift.afterDays}d`
     return h.span(
       [h.Class('flex items-center gap-2')],
       [
         h.span([h.Class('inline-block w-3 h-3'), h.Style({ background: entry.color })], []),
-        h.span([], [`#${entry.experiment.id} ${delta > 0 ? '+' : ''}${delta}`]),
+        h.span([], [`#${entry.experiment.id} ${status}`]),
       ],
     )
   })
@@ -296,7 +299,7 @@ const overviewChart = (experiments: ReadonlyArray<Experiment>, h: HtmlBuilder<Me
         h.h2([h.Class('text-2xl font-black text-ink')], ['All experiments vs control']),
         h.p(
           [h.Class('text-sm text-ink/70')],
-          ['Each line is treated pages divided by control pages, 7-day average, indexed so the baseline is 100. Above 100 means the change is beating its control. The dot marks the change date.'],
+          ['Each line is treated pages divided by control pages, 7-day average, indexed so the baseline is 100. Above 100 means the change is beating its control. The dot marks the change date. Movement before the dot is normal noise, which shows how big a real effect must be to count.'],
         ),
         h.svg(
           [h.ViewBox(`0 0 ${OVERVIEW_WIDTH} ${OVERVIEW_HEIGHT}`), h.Class('w-full h-auto'), h.Role('img'), h.AriaLabel('Relative lift of every experiment against its control over time')],
