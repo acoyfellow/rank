@@ -1,0 +1,13 @@
+{
+  "id": "003",
+  "title": "Descriptive titles on short-titled posts",
+  "hypothesis": "Replacing bare one- to four-word titles on seven posts with titles that name the topic raises human page views on those posts, compared with similar-traffic posts whose title already names the topic.",
+  "metric": "human page views per window on the seven retitled posts",
+  "target": "treated posts grow at least 20% more than control posts",
+  "group": "post-titles",
+  "treated": ["/taste", "/perfect-do", "/constraint-theory", "/prompts-are-wishes", "/built-in-reverse", "/worker-loaders", "/vm-api"],
+  "control": ["/patience", "/deja-research", "/real-time-logging", "/gate-review", "/ego-less", "/spread", "/self", "/puzzle"],
+  "windowDays": 14,
+  "commit": "3192cb1",
+  "commitDate": "2026-10-15T12:50:59Z"
+}

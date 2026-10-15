@@ -1,0 +1,86 @@
+{
+  "experiment": "003",
+  "phase": "baseline",
+  "metric": "human page views per window on the seven retitled posts",
+  "windowStart": "2026-10-01",
+  "windowEnd": "2026-10-14",
+  "windowDays": 14,
+  "frozenAt": "2026-10-15T12:52:52.248Z",
+  "rows": [
+    {
+      "path": "/worker-loaders",
+      "count": 96,
+      "arm": "treated"
+    },
+    {
+      "path": "/prompts-are-wishes",
+      "count": 76,
+      "arm": "treated"
+    },
+    {
+      "path": "/built-in-reverse",
+      "count": 71,
+      "arm": "treated"
+    },
+    {
+      "path": "/constraint-theory",
+      "count": 65,
+      "arm": "treated"
+    },
+    {
+      "path": "/vm-api",
+      "count": 54,
+      "arm": "treated"
+    },
+    {
+      "path": "/taste",
+      "count": 52,
+      "arm": "treated"
+    },
+    {
+      "path": "/perfect-do",
+      "count": 51,
+      "arm": "treated"
+    },
+    {
+      "path": "/self",
+      "count": 82,
+      "arm": "control"
+    },
+    {
+      "path": "/ego-less",
+      "count": 75,
+      "arm": "control"
+    },
+    {
+      "path": "/deja-research",
+      "count": 62,
+      "arm": "control"
+    },
+    {
+      "path": "/gate-review",
+      "count": 62,
+      "arm": "control"
+    },
+    {
+      "path": "/patience",
+      "count": 62,
+      "arm": "control"
+    },
+    {
+      "path": "/real-time-logging",
+      "count": 60,
+      "arm": "control"
+    },
+    {
+      "path": "/puzzle",
+      "count": 57,
+      "arm": "control"
+    },
+    {
+      "path": "/spread",
+      "count": 52,
+      "arm": "control"
+    }
+  ]
+}
