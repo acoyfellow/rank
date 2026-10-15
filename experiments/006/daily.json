@@ -1,0 +1,72 @@
+[
+  {
+    "date": "2026-10-01",
+    "treated": 41,
+    "control": 30
+  },
+  {
+    "date": "2026-10-02",
+    "treated": 91,
+    "control": 50
+  },
+  {
+    "date": "2026-10-03",
+    "treated": 59,
+    "control": 21
+  },
+  {
+    "date": "2026-10-04",
+    "treated": 54,
+    "control": 35
+  },
+  {
+    "date": "2026-10-05",
+    "treated": 32,
+    "control": 24
+  },
+  {
+    "date": "2026-10-06",
+    "treated": 34,
+    "control": 26
+  },
+  {
+    "date": "2026-10-07",
+    "treated": 33,
+    "control": 16
+  },
+  {
+    "date": "2026-10-08",
+    "treated": 84,
+    "control": 57
+  },
+  {
+    "date": "2026-10-09",
+    "treated": 51,
+    "control": 25
+  },
+  {
+    "date": "2026-10-10",
+    "treated": 24,
+    "control": 11
+  },
+  {
+    "date": "2026-10-11",
+    "treated": 32,
+    "control": 17
+  },
+  {
+    "date": "2026-10-12",
+    "treated": 61,
+    "control": 43
+  },
+  {
+    "date": "2026-10-13",
+    "treated": 34,
+    "control": 12
+  },
+  {
+    "date": "2026-10-14",
+    "treated": 52,
+    "control": 23
+  }
+]
