@@ -5,7 +5,8 @@ import type { Document, Html, HtmlBuilder } from 'foldkit/html'
 import { defineMessageUnion } from 'foldkit/message'
 import { modifyFields } from 'foldkit/struct'
 
-import { type Experiment, Snapshot, type Source } from './snapshot'
+import { liftOf } from './lift'
+import { type DayRow, type Experiment, Snapshot, type Source } from './snapshot'
 
 export const SnapshotAsyncData = AsyncData.Schema(Snapshot, Schema.String)
 
@@ -124,6 +125,67 @@ const sourceCard = (source: Source, h: HtmlBuilder<Message>): Html => {
   )
 }
 
+const CHART_WIDTH = 300
+const CHART_HEIGHT = 60
+
+const linePoints = (rows: ReadonlyArray<DayRow>, arm: 'treated' | 'control', top: number) =>
+  rows
+    .map((row, index) => {
+      const x = rows.length === 1 ? 0 : (index / (rows.length - 1)) * CHART_WIDTH
+      const y = CHART_HEIGHT - (row[arm] / top) * CHART_HEIGHT
+      return `${x.toFixed(1)},${y.toFixed(1)}`
+    })
+    .join(' ')
+
+const changeX = (rows: ReadonlyArray<DayRow>, changeDay: string) => {
+  const index = rows.findIndex(row => row.date >= changeDay)
+  if (index < 0 || rows.length < 2) return CHART_WIDTH
+  return (index / (rows.length - 1)) * CHART_WIDTH
+}
+
+const dailyChart = (experiment: Experiment, rows: ReadonlyArray<DayRow>, h: HtmlBuilder<Message>): Html => {
+  const top = Math.max(1, ...rows.map(row => Math.max(row.treated, row.control)))
+  const x = changeX(rows, experiment.commitDate.slice(0, 10)).toFixed(1)
+  return h.svg(
+    [
+      h.ViewBox(`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`),
+      h.PreserveAspectRatio('none'),
+      h.Class('w-full h-16'),
+      h.Role('img'),
+      h.AriaLabel(`Daily human views, treated and control, for experiment ${experiment.id}`),
+    ],
+    [
+      h.line([h.X1(x), h.X2(x), h.Y1('0'), h.Y2(`${CHART_HEIGHT}`), h.Stroke('currentColor'), h.StrokeWidth('1'), h.Class('text-ink/30')], []),
+      h.polyline([h.Points(linePoints(rows, 'control', top)), h.Fill('none'), h.Stroke('currentColor'), h.StrokeWidth('1.5'), h.Class('text-ink/40')], []),
+      h.polyline([h.Points(linePoints(rows, 'treated', top)), h.Fill('none'), h.Stroke('currentColor'), h.StrokeWidth('2'), h.Class('text-signal')], []),
+    ],
+  )
+}
+
+const liftLabel = (experiment: Experiment, rows: ReadonlyArray<DayRow>) => {
+  const lift = liftOf(rows, experiment.commitDate)
+  if (lift.liftPercent === null) return 'lift: waiting for after-days'
+  const sign = lift.liftPercent > 0 ? '+' : ''
+  const final = lift.afterDays >= experiment.windowDays ? 'final window' : 'not final'
+  return `lift ${sign}${lift.liftPercent}% vs control · ${lift.afterDays}/${experiment.windowDays} days · ${final}`
+}
+
+const dailySection = (experiment: Experiment, h: HtmlBuilder<Message>): ReadonlyArray<Html> => {
+  const rows = experiment.daily ?? []
+  if (rows.length === 0) return []
+  return [
+    dailyChart(experiment, rows, h),
+    h.p(
+      [h.Class('font-mono text-xs text-ink/60 flex flex-wrap gap-x-4')],
+      [
+        h.span([h.Class('text-signal')], ['— treated']),
+        h.span([h.Class('text-ink/40')], ['— control']),
+        h.span([], [liftLabel(experiment, rows)]),
+      ],
+    ),
+  ]
+}
+
 const experimentCard = (experiment: Experiment, h: HtmlBuilder<Message>): Html =>
   h.article(
     [h.Class('border-2 border-ink p-6 flex flex-col gap-3 bg-paper')],
@@ -144,6 +206,7 @@ const experimentCard = (experiment: Experiment, h: HtmlBuilder<Message>): Html =
       ),
       h.h3([h.Class('text-xl font-bold text-ink')], [experiment.title]),
       h.p([h.Class('text-ink/70')], [experiment.hypothesis]),
+      ...dailySection(experiment, h),
       h.dl(
         [h.Class('grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm font-mono text-ink/70')],
         [

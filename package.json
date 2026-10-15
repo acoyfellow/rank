@@ -13,7 +13,8 @@
     "verify": "bun scripts/verify.ts",
     "iterate": "bun scripts/iterate.ts",
     "deploy": "bun run build && alchemy deploy",
-    "destroy": "alchemy destroy"
+    "destroy": "alchemy destroy",
+    "daily": "bun scripts/daily.ts"
   },
   "dependencies": {
     "@effect/platform-browser": "4.0.0",

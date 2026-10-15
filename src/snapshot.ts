@@ -12,6 +12,13 @@ export const Source = Schema.Struct({
 })
 export type Source = typeof Source.Type
 
+export const DayRow = Schema.Struct({
+  date: Schema.String,
+  treated: Schema.Number,
+  control: Schema.Number,
+})
+export type DayRow = typeof DayRow.Type
+
 export const Experiment = Schema.Struct({
   id: Schema.String,
   title: Schema.String,
@@ -25,6 +32,7 @@ export const Experiment = Schema.Struct({
   baseline: Schema.Struct({ from: Schema.String, to: Schema.String }),
   after: Schema.Struct({ from: Schema.String, to: Schema.String }),
   verdict: Schema.Literals(['open', 'proven', 'disproven', 'inconclusive']),
+  daily: Schema.optional(Schema.Array(DayRow)),
 })
 export type Experiment = typeof Experiment.Type
 

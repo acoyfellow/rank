@@ -1,6 +1,12 @@
 import { Effect, Schema } from 'effect'
 import { CloudflareApi, CloudflareError, CloudflareSettings } from './cloudflare'
+import daily from './daily.generated.json'
 import { experiments } from './ledger'
+
+const dailyById: Readonly<Record<string, ReadonlyArray<{ date: string; treated: number; control: number }>>> = daily
+
+const withDaily = () =>
+  experiments.map(experiment => ({ ...experiment, daily: dailyById[experiment.id] ?? [] }))
 
 const DAY_MS = 86_400_000
 const WINDOW_DAYS = 7
@@ -198,5 +204,5 @@ export const buildSnapshot = Effect.gen(function* () {
     ),
   ]
 
-  return { site: host, generatedAt: fetchedAt, window: { from: isoDate(WINDOW_DAYS), to: isoDate(0) }, sources, experiments }
+  return { site: host, generatedAt: fetchedAt, window: { from: isoDate(WINDOW_DAYS), to: isoDate(0) }, sources, experiments: withDaily() }
 })
