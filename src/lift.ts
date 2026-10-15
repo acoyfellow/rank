@@ -33,3 +33,26 @@ export const liftOf = (rows: ReadonlyArray<DayRow>, changeDate: string): Lift =>
     liftPercent,
   }
 }
+
+export type IndexPoint = Readonly<{ date: string; index: number }>
+
+const ROLLING_DAYS = 7
+
+const mean = (values: ReadonlyArray<number>) =>
+  values.length === 0 ? 0 : values.reduce((total, value) => total + value, 0) / values.length
+
+export const relativeIndex = (rows: ReadonlyArray<DayRow>, changeDate: string): ReadonlyArray<IndexPoint> => {
+  const changeDay = changeDate.slice(0, 10)
+  const before = rows.filter(row => row.date < changeDay)
+  const treatedBase = mean(before.map(row => row.treated))
+  const controlBase = mean(before.map(row => row.control))
+  if (treatedBase === 0 || controlBase === 0) return []
+  return rows.flatMap((row, position) => {
+    if (position + 1 < ROLLING_DAYS) return []
+    const window = rows.slice(position + 1 - ROLLING_DAYS, position + 1)
+    const control = mean(window.map(day => day.control)) / controlBase
+    if (control === 0) return []
+    const treated = mean(window.map(day => day.treated)) / treatedBase
+    return [{ date: row.date, index: Math.round((treated / control) * 100) }]
+  })
+}
