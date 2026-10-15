@@ -3,58 +3,43 @@ import { FetchHttpClient } from 'effect/http'
 import { rankConfig } from '../rank.config'
 import { CloudflareApiLive } from '../server/cloudflare'
 import { CloudflareSettingsFromEnv } from '../server/settings'
-import { Traffic, TrafficLive, type PathCount } from '../server/traffic'
+import { buildSnapshot, type Source } from '../server/snapshot'
 
-const DAY_MS = 86_400_000
-const RESEARCH_DAYS = 7
-const TOP_PATHS = 10
-
-const isoDate = (offsetDays: number) =>
-  new Date(Date.now() - offsetDays * DAY_MS).toISOString().slice(0, 10)
+const TOP_ROWS = 10
 
 const groupOf = (path: string) =>
-  Object.entries(rankConfig.pageGroups).find(([, prefix]) =>
-    path.startsWith(prefix),
-  )?.[0] ?? 'other'
+  Object.entries(rankConfig.pageGroups).find(([, prefix]) => path.startsWith(prefix))?.[0] ??
+  'other'
 
-const summarizeByGroup = (rows: ReadonlyArray<PathCount>) => {
-  const totals = new Map<string, { humans: number; crawlers: number }>()
-  for (const row of rows) {
-    const group = groupOf(row.path)
-    const current = totals.get(group) ?? { humans: 0, crawlers: 0 }
-    if (row.botCategory === '') current.humans += row.count
-    else current.crawlers += row.count
-    totals.set(group, current)
+const pageGroupTotals = (pages: Source | undefined) => {
+  const totals = new Map<string, number>()
+  for (const row of pages?.rows ?? []) {
+    totals.set(groupOf(row.key), (totals.get(groupOf(row.key)) ?? 0) + row.count)
   }
-  return [...totals.entries()].sort((a, b) => b[1].humans - a[1].humans)
+  return [...totals.entries()].sort((a, b) => b[1] - a[1])
 }
 
 const research = Effect.gen(function* () {
-  const traffic = yield* Traffic
-  const window = { from: isoDate(RESEARCH_DAYS), to: isoDate(0) }
-  const [paths, days] = yield* Effect.all([
-    traffic.pathsByBot(window),
-    traffic.days(window),
-  ])
-
-  yield* Console.log(`# Research for ${rankConfig.site}, ${window.from} to ${window.to}`)
-  yield* Console.log('\n## Source: GraphQL zone analytics')
+  const snapshot = yield* buildSnapshot
   yield* Console.log(
-    `days=${days.length} pageViews=${days.reduce((sum, d) => sum + d.pageViews, 0)}`,
+    `# Research for ${rankConfig.site}, ${snapshot.window.from} to ${snapshot.window.to}`,
   )
-  yield* Console.log('\n## Page groups (humans / verified crawlers)')
-  for (const [group, totals] of summarizeByGroup(paths)) {
-    yield* Console.log(`${group}: ${totals.humans} / ${totals.crawlers}`)
+  for (const source of snapshot.sources) {
+    yield* Console.log(`\n## Source: ${source.product}, ${source.label} (total ${source.total})`)
+    for (const row of source.rows.slice(0, TOP_ROWS)) {
+      yield* Console.log(`${row.count}\t${row.key}`)
+    }
   }
-  yield* Console.log('\n## Top paths')
-  for (const row of paths.filter(r => r.botCategory === '').slice(0, TOP_PATHS)) {
-    yield* Console.log(`${row.count}\t${row.path}`)
+  yield* Console.log('\n## Page groups (human requests, top paths only)')
+  for (const [group, total] of pageGroupTotals(
+    snapshot.sources.find(source => source.id === 'pages'),
+  )) {
+    yield* Console.log(`${group}: ${total}`)
   }
-  return { paths: paths.length, days: days.length }
+  return snapshot
 })
 
-const AppLayer = TrafficLive.pipe(
-  Layer.provideMerge(CloudflareApiLive),
+const AppLayer = CloudflareApiLive.pipe(
   Layer.provideMerge(CloudflareSettingsFromEnv),
   Layer.provideMerge(FetchHttpClient.layer),
 )
@@ -66,14 +51,18 @@ const program = Effect.gen(function* () {
   if (command !== 'research') {
     return yield* Effect.fail(new Error(`unknown command: ${command}`))
   }
-  const result = yield* research
-  if (result.days === 0) {
-    return yield* Effect.fail(new Error('research returned no traffic days'))
+  const snapshot = yield* research
+  if (snapshot.sources.every(source => source.total === 0)) {
+    return yield* Effect.fail(new Error('research returned no traffic'))
   }
   yield* Console.log(dryRun ? '\ndry run: nothing written' : '')
 })
 
 Effect.runPromise(program.pipe(Effect.provide(AppLayer))).catch(error => {
-  console.error(error instanceof Error ? `${error.name}: ${error.message} ${JSON.stringify(error)}` : String(error))
+  console.error(
+    error instanceof Error
+      ? `${error.name}: ${error.message} ${JSON.stringify(error)}`
+      : String(error),
+  )
   process.exit(1)
 })
