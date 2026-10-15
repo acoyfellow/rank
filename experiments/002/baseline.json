@@ -1,0 +1,51 @@
+{
+  "experiment": "002",
+  "phase": "baseline",
+  "metric": "human page views per window on /, /blog, /projects",
+  "windowStart": "2026-10-01",
+  "windowEnd": "2026-10-14",
+  "windowDays": 14,
+  "frozenAt": "2026-10-15T12:46:49.483Z",
+  "rows": [
+    {
+      "path": "/",
+      "count": 4079,
+      "arm": "treated"
+    },
+    {
+      "path": "/blog",
+      "count": 506,
+      "arm": "treated"
+    },
+    {
+      "path": "/projects",
+      "count": 435,
+      "arm": "treated"
+    },
+    {
+      "path": "/terraloop",
+      "count": 378,
+      "arm": "control"
+    },
+    {
+      "path": "/cursing-agents",
+      "count": 171,
+      "arm": "control"
+    },
+    {
+      "path": "/correctness",
+      "count": 119,
+      "arm": "control"
+    },
+    {
+      "path": "/agentic-architecture",
+      "count": 93,
+      "arm": "control"
+    },
+    {
+      "path": "/context-cues",
+      "count": 90,
+      "arm": "control"
+    }
+  ]
+}

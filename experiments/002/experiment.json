@@ -1,0 +1,13 @@
+{
+  "id": "002",
+  "title": "Specific titles and descriptions on hub pages",
+  "hypothesis": "Replacing the generic title and description on /, /blog and /projects with specific, keyword-bearing ones raises human page views on those pages, compared with post pages whose meta did not change.",
+  "metric": "human page views per window on /, /blog, /projects",
+  "target": "treated pages grow at least 15% more than control pages",
+  "group": "hubs",
+  "treated": ["/", "/blog", "/projects"],
+  "control": ["/terraloop", "/cursing-agents", "/correctness", "/agentic-architecture", "/context-cues"],
+  "windowDays": 14,
+  "commit": "f50c4ac",
+  "commitDate": "2026-10-15T12:45:31Z"
+}

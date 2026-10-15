@@ -35,4 +35,25 @@ export const experiments: ReadonlyArray<Experiment> = [
     after: { from: '2026-10-13', to: '2026-10-26' },
     verdict: 'open',
   },
+  {
+    id: '002',
+    title: 'Specific titles and descriptions on hub pages',
+    hypothesis:
+      'Replacing the generic title and description on /, /blog and /projects with specific, keyword-bearing ones raises human page views on those pages, compared with post pages whose meta did not change.',
+    metric: 'human page views per window on /, /blog, /projects',
+    commit: 'f50c4ac',
+    commitDate: '2026-10-15T12:45:31Z',
+    windowDays: 14,
+    treated: ['/', '/blog', '/projects'],
+    control: [
+      '/terraloop',
+      '/cursing-agents',
+      '/correctness',
+      '/agentic-architecture',
+      '/context-cues',
+    ],
+    baseline: { from: '2026-10-01', to: '2026-10-14' },
+    after: { from: '2026-10-15', to: '2026-10-28' },
+    verdict: 'open',
+  },
 ]
