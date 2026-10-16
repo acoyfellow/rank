@@ -157,4 +157,19 @@ export const experiments: ReadonlyArray<Experiment> = [
     after: { from: '2026-10-15', to: '2026-10-28' },
     verdict: 'open',
   },
+  {
+    id: '007',
+    title: 'CollectionPage structured data on /prompts',
+    hypothesis:
+      'Adding CollectionPage and ItemList JSON-LD that lists all 27 prompts to the /prompts index raises human page views on /prompts, compared with index pages that have no list markup.',
+    metric: 'human page views per window on /prompts',
+    commit: '8582977',
+    commitDate: '2026-10-16T01:15:53Z',
+    windowDays: 14,
+    treated: ['/prompts'],
+    control: ['/show-me', '/parley', '/quinn', '/about'],
+    baseline: { from: '2026-10-02', to: '2026-10-15' },
+    after: { from: '2026-10-16', to: '2026-10-29' },
+    verdict: 'open',
+  },
 ]

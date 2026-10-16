@@ -1,0 +1,31 @@
+{
+  "experiment": "007",
+  "phase": "baseline",
+  "metric": "human page views per window on /prompts",
+  "windowStart": "2026-10-02",
+  "windowEnd": "2026-10-15",
+  "windowDays": 14,
+  "frozenAt": "2026-10-16T01:28:21.601Z",
+  "rows": [
+    {
+      "path": "/prompts",
+      "count": 130,
+      "arm": "treated"
+    },
+    {
+      "path": "/about",
+      "count": 332,
+      "arm": "control"
+    },
+    {
+      "path": "/show-me",
+      "count": 51,
+      "arm": "control"
+    },
+    {
+      "path": "/parley",
+      "count": 49,
+      "arm": "control"
+    }
+  ]
+}

@@ -97,7 +97,7 @@ const seriesFor = (plan: Plan, pathDays: ReadonlyArray<PathDay>, today: string):
       .reduce((sum, row) => sum + row.count, 0)
   return daysBetween(range.from, lastDay).flatMap(date => {
     if (date === today) return []
-    if (!fetchedDates.has(date)) {
+    if (!fetchedDates.has(date) || saved.has(date)) {
       const kept = saved.get(date)
       return kept ? [kept] : []
     }
@@ -109,7 +109,18 @@ const program = Effect.gen(function* () {
   const plans = readPlans()
   const today = isoDate(Date.now())
   const earliest = plans.map(plan => planRange(plan).from).sort()[0] ?? today
-  const pathDays = yield* fetchPathDays(earliest, today)
+  const yesterday = isoDate(Date.parse(today) - DAY_MS)
+  const missing = (plan: Plan) => {
+    const saved = new Set(readSaved(plan.id).map(row => row.date))
+    const range = planRange(plan)
+    const last = range.to < yesterday ? range.to : yesterday
+    return daysBetween(range.from, last).filter(date => !saved.has(date))
+  }
+  const needed = [...new Set(plans.flatMap(missing))].sort()
+  const pathDays = yield* Effect.forEach(needed, fetchPathDay, { concurrency: 1 }).pipe(
+    Effect.map(days => days.flat()),
+  )
+  console.log(`fetched ${needed.length} missing day(s) from ${earliest}`)
   const generated: Record<string, ReadonlyArray<DayRow>> = {}
   for (const plan of plans) {
     const series = seriesFor(plan, pathDays, today)
