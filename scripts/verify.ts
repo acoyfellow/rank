@@ -46,10 +46,14 @@ const checks: Check[] = [
     },
   },
   {
-    name: 'no scheduled optimization trigger',
+    name: 'schedule refreshes data only, never optimizes',
     run: async () => {
       const config = ['alchemy.run.ts', 'wrangler.jsonc'].filter(existsSync).map((f) => readFileSync(f, 'utf8')).join('\n');
-      return /crons|schedule|alarm\(/i.test(config) ? 'a cron, schedule or alarm exists in deploy config' : null;
+      const crons = [...config.matchAll(/crons:\s*\[([^\]]*)\]/g)].map(match => match[1]?.trim())
+      if (crons.some(entry => entry !== "'17 * * * *'")) return 'only the hourly data refresh cron is allowed'
+      if (/alarm\(/i.test(config)) return 'an alarm exists in deploy config'
+      const worker = readFileSync('worker/index.ts', 'utf8')
+      return /iterate|git push|ledger\.ts.*write/i.test(worker) ? 'the scheduled handler must only refresh data' : null;
     },
   },
   {

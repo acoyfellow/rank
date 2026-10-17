@@ -37,7 +37,12 @@ research -> hypothesis -> act -> measure -> record
 4. **Measure.** The same metric is read over the same length of window before and after the change.
 5. **Record.** The verdict (`proven`, `disproven`, or `inconclusive`) is added to the ledger.
 
-A person starts each iteration with `bun run iterate`. Nothing runs on a schedule.
+A person starts each iteration with `bun run iterate`. Experiments never run on a schedule.
+
+The data does. Once an hour (`17 * * * *`) the Worker re-reads Cloudflare analytics, backfills missing
+daily rows for every experiment (up to 6 days per run, to stay inside the GraphQL rate limit), and
+writes a fresh snapshot to KV. The page always reads that snapshot. The scheduled handler only reads
+analytics. It never changes the site or the ledger.
 
 ## How you know it worked
 

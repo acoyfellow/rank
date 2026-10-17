@@ -19,6 +19,7 @@ export const worker = await Worker('rank', {
   entrypoint: './worker/index.ts',
   compatibilityDate: '2026-10-13',
   url: false,
+  crons: ['17 * * * *'],
   routes: [{ pattern: `${rankConfig.host}/rank*`, zoneId: required('RANK_ZONE_ID') }],
   bindings: {
     ASSETS: assets,

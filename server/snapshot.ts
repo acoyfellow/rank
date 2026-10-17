@@ -1,12 +1,13 @@
 import { Effect, Schema } from 'effect'
 import { CloudflareApi, CloudflareError, CloudflareSettings } from './cloudflare'
-import daily from './daily.generated.json'
+import type { DailyById } from './daily'
+import seededDaily from './daily.generated.json'
 import { experiments } from './ledger'
 
-const dailyById: Readonly<Record<string, ReadonlyArray<{ date: string; treated: number; control: number }>>> = daily
+export const seedDaily: DailyById = seededDaily
 
-const withDaily = () =>
-  experiments.map(experiment => ({ ...experiment, daily: dailyById[experiment.id] ?? [] }))
+const withDaily = (daily: DailyById) =>
+  experiments.map(experiment => ({ ...experiment, daily: daily[experiment.id] ?? [] }))
 
 const DAY_MS = 86_400_000
 const WINDOW_DAYS = 7
@@ -125,7 +126,7 @@ const snapshotQuery = (zoneId: string, accountId: string, host: string) => {
   }}`
 }
 
-export const buildSnapshot = Effect.gen(function* () {
+export const buildSnapshotWith = (daily: DailyById) => Effect.gen(function* () {
   const api = yield* CloudflareApi
   const { zoneId, accountId, host } = yield* CloudflareSettings
   const raw = yield* api.graphql(
@@ -204,5 +205,7 @@ export const buildSnapshot = Effect.gen(function* () {
     ),
   ]
 
-  return { site: host, generatedAt: fetchedAt, window: { from: isoDate(WINDOW_DAYS), to: isoDate(0) }, sources, experiments: withDaily() }
+  return { site: host, generatedAt: fetchedAt, window: { from: isoDate(WINDOW_DAYS), to: isoDate(0) }, sources, experiments: withDaily(daily) }
 })
+
+export const buildSnapshot = buildSnapshotWith(seedDaily)
