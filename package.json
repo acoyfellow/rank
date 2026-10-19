@@ -14,7 +14,11 @@
     "iterate": "bun scripts/iterate.ts",
     "deploy": "bun run build && alchemy deploy",
     "destroy": "alchemy destroy",
-    "daily": "bun scripts/daily.ts"
+    "daily": "bun scripts/daily.ts",
+    "ledger": "bun scripts/ledger.ts",
+    "overlap": "bun scripts/overlap.ts",
+    "stats": "bun scripts/stats.ts",
+    "baseline:batch": "bun scripts/baseline-batch.ts"
   },
   "dependencies": {
     "@effect/platform-browser": "4.0.0",

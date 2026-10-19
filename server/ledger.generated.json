@@ -1,0 +1,231 @@
+[
+  {
+    "id": "001",
+    "title": "Related prompts on every prompt page",
+    "hypothesis": "Five Clef-ranked related prompt links on each prompt page raise human page views per prompt page, compared with the five prompts that no other page links to.",
+    "metric": "human page views per /prompts/* page per window",
+    "commit": "0726bb2",
+    "commitDate": "2026-10-13T10:47:12Z",
+    "windowDays": 14,
+    "treated": [
+      "/prompts/*"
+    ],
+    "control": [
+      "/prompts/be-concise",
+      "/prompts/cracked-out",
+      "/prompts/inbox-dog",
+      "/prompts/philosophy",
+      "/prompts/write-prd-ts"
+    ],
+    "baseline": {
+      "from": "2026-09-29",
+      "to": "2026-10-12"
+    },
+    "after": {
+      "from": "2026-10-13",
+      "to": "2026-10-26"
+    },
+    "verdict": "open"
+  },
+  {
+    "id": "002",
+    "title": "Specific titles and descriptions on hub pages",
+    "hypothesis": "Replacing the generic title and description on /, /blog and /projects with specific, keyword-bearing ones raises human page views on those pages, compared with post pages whose meta did not change.",
+    "metric": "human page views per window on /, /blog, /projects",
+    "commit": "f50c4ac",
+    "commitDate": "2026-10-15T12:45:31Z",
+    "windowDays": 14,
+    "treated": [
+      "/",
+      "/blog",
+      "/projects"
+    ],
+    "control": [
+      "/terraloop",
+      "/cursing-agents",
+      "/correctness",
+      "/context-cues"
+    ],
+    "baseline": {
+      "from": "2026-10-01",
+      "to": "2026-10-14"
+    },
+    "after": {
+      "from": "2026-10-15",
+      "to": "2026-10-28"
+    },
+    "verdict": "open"
+  },
+  {
+    "id": "003",
+    "title": "Descriptive titles on short-titled posts",
+    "hypothesis": "Replacing bare one- to four-word titles on seven posts with titles that name the topic raises human page views on those posts, compared with similar-traffic posts whose title already names the topic.",
+    "metric": "human page views per window on the seven retitled posts",
+    "commit": "3192cb1",
+    "commitDate": "2026-10-15T12:50:59Z",
+    "windowDays": 14,
+    "treated": [
+      "/taste",
+      "/perfect-do",
+      "/constraint-theory",
+      "/prompts-are-wishes",
+      "/built-in-reverse",
+      "/worker-loaders",
+      "/vm-api"
+    ],
+    "control": [
+      "/patience",
+      "/deja-research",
+      "/real-time-logging",
+      "/gate-review",
+      "/ego-less",
+      "/spread",
+      "/self",
+      "/puzzle"
+    ],
+    "baseline": {
+      "from": "2026-10-01",
+      "to": "2026-10-14"
+    },
+    "after": {
+      "from": "2026-10-15",
+      "to": "2026-10-28"
+    },
+    "verdict": "open"
+  },
+  {
+    "id": "004",
+    "title": "List unlisted posts in the sitemap",
+    "hypothesis": "Adding 14 crawlable but unlisted posts to sitemap.xml raises verified-crawler and human requests to those posts, compared with listed posts of similar age and traffic.",
+    "metric": "human page views per window on the 14 newly listed posts",
+    "commit": "9eb9d5f",
+    "commitDate": "2026-10-15T12:57:41Z",
+    "windowDays": 14,
+    "treated": [
+      "/agentic-architecture",
+      "/blaze",
+      "/cache-sync",
+      "/constraints-not-loops",
+      "/ditto",
+      "/email-agents",
+      "/gateproof",
+      "/ralph-wiggum",
+      "/remote-stack",
+      "/reverse-building",
+      "/think-in-loops",
+      "/tiny",
+      "/trust-broker",
+      "/workflow-live"
+    ],
+    "control": [
+      "/userdo",
+      "/agentcast",
+      "/bio",
+      "/campfire",
+      "/agents-patterns",
+      "/firestore-agents",
+      "/edgewire",
+      "/video-to-ascii"
+    ],
+    "baseline": {
+      "from": "2026-10-01",
+      "to": "2026-10-14"
+    },
+    "after": {
+      "from": "2026-10-15",
+      "to": "2026-10-28"
+    },
+    "verdict": "open"
+  },
+  {
+    "id": "005",
+    "title": "Resources hub: specific meta and sitemap entry",
+    "hypothesis": "Giving /resources a specific title and description, and listing /resources and /research in sitemap.xml, raises human page views on those two hubs, compared with hub pages that did not change.",
+    "metric": "human page views per window on /resources and /research",
+    "commit": "63e5247",
+    "commitDate": "2026-10-15T16:54:52Z",
+    "windowDays": 14,
+    "treated": [
+      "/resources",
+      "/research"
+    ],
+    "control": [
+      "/about",
+      "/bio",
+      "/agents-patterns"
+    ],
+    "baseline": {
+      "from": "2026-10-01",
+      "to": "2026-10-14"
+    },
+    "after": {
+      "from": "2026-10-15",
+      "to": "2026-10-28"
+    },
+    "verdict": "open"
+  },
+  {
+    "id": "006",
+    "title": "Read next links from high-traffic posts",
+    "hypothesis": "Adding a Read next block with three related post links to /entropy-wall, /whos-driving and /liquid-primitives raises human page views on the nine linked posts, compared with posts of similar traffic that get no new inbound links.",
+    "metric": "human page views per window on the nine linked-to posts",
+    "commit": "afd53cf",
+    "commitDate": "2026-10-15T21:08:52Z",
+    "windowDays": 14,
+    "treated": [
+      "/worms-history",
+      "/algorithmic-press",
+      "/durable-objects-gotchas",
+      "/preflight",
+      "/fleet-pattern",
+      "/cf-tutorial",
+      "/checkout-reality",
+      "/loop-demo",
+      "/effect-taggederror"
+    ],
+    "control": [
+      "/loop",
+      "/compaction",
+      "/effect-first",
+      "/casa-tier-2",
+      "/deja",
+      "/promptlog"
+    ],
+    "baseline": {
+      "from": "2026-10-01",
+      "to": "2026-10-14"
+    },
+    "after": {
+      "from": "2026-10-15",
+      "to": "2026-10-28"
+    },
+    "verdict": "open"
+  },
+  {
+    "id": "007",
+    "title": "CollectionPage structured data on /prompts",
+    "hypothesis": "Adding CollectionPage and ItemList JSON-LD that lists all 27 prompts to the /prompts index raises human page views on /prompts, compared with index pages that have no list markup.",
+    "metric": "human page views per window on /prompts",
+    "commit": "8582977",
+    "commitDate": "2026-10-16T01:15:53Z",
+    "windowDays": 14,
+    "treated": [
+      "/prompts"
+    ],
+    "control": [
+      "/show-me",
+      "/parley",
+      "/quinn",
+      "/about"
+    ],
+    "baseline": {
+      "from": "2026-10-02",
+      "to": "2026-10-15"
+    },
+    "after": {
+      "from": "2026-10-16",
+      "to": "2026-10-29"
+    },
+    "verdict": "open"
+  }
+]

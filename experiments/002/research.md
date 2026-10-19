@@ -18,3 +18,10 @@ The gap is meta text on the hub pages. `/` (3,892 human views, 202 verified-bot 
 use the description "jordan coeyman's unrefined notepad.", which names no topic. `/projects` uses
 "Projects by Jordan Coeyman". Post pages already have specific descriptions of 150 characters or
 more, so they are the control group.
+
+## Correction, 2026-10-17
+
+The overlap check found that /agentic-architecture was in this control group and also a treated page in
+experiment 004, which added it to sitemap.xml on 2026-10-15. A treated page cannot be a control. It is
+removed from this control group. The frozen baseline keeps its original rows. The verdict uses the four
+remaining control pages for both windows.

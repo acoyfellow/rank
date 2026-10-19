@@ -68,5 +68,25 @@
     "date": "2026-10-14",
     "treated": 49,
     "control": 41
+  },
+  {
+    "date": "2026-10-15",
+    "treated": 37,
+    "control": 32
+  },
+  {
+    "date": "2026-10-16",
+    "treated": 8,
+    "control": 16
+  },
+  {
+    "date": "2026-10-17",
+    "treated": 47,
+    "control": 41
+  },
+  {
+    "date": "2026-10-18",
+    "treated": 26,
+    "control": 39
   }
 ]
