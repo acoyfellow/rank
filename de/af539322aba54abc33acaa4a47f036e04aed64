@@ -1,0 +1,67 @@
+experiments/001/daily.json
+  s_2065c5125668b9::t_104e29acad9faf 81-100
+experiments/002/daily.json
+  s_2065c5125668b9::t_b4bf75fbbf4d80 71-90
+experiments/002/experiment.json
+  s_2065c5125668b9::t_cba8d56087caba 8-18
+experiments/002/research.md
+  s_2065c5125668b9::t_7ee47a739217d1 21-27
+experiments/003/daily.json
+  s_2065c5125668b9::t_8ffe977408f79a 71-90
+experiments/004/daily.json
+  s_2065c5125668b9::t_9b88254a1f33eb 71-90
+experiments/005/daily.json
+  s_2065c5125668b9::t_ec1383960fe528 71-90
+experiments/006/daily.json
+  s_2065c5125668b9::t_11a28530a12013 71-90
+experiments/007/daily.json
+  s_2065c5125668b9::t_a0f29807c22b4a 1-87
+package.json
+  s_5ddfc8f4108175::t_4a843dae06e9ea 17-21
+scripts/baseline-batch.ts
+  s_2065c5125668b9::t_426d63249da10d 1-28
+scripts/ledger.ts
+  s_2065c5125668b9::t_47ca0ad3f33db4 1-20
+scripts/overlap.ts
+  s_2065c5125668b9::t_c1ad23fc8d371f 1-21
+scripts/plans.ts
+  s_2065c5125668b9::t_a62b7d88455c77 1-23
+scripts/stats.ts
+  s_5ddfc8f4108175::t_76ce38302c14a6 1-23
+server/daily.generated.json
+  s_2065c5125668b9::t_b15610bce61ee3 1-651
+server/ledger.generated.json
+  s_2065c5125668b9::t_bf3cd8c5221079 1-231
+server/ledger.ts
+  s_2065c5125668b9::t_c73a53044b5983 1-2,18
+server/plan.test.ts
+  s_2065c5125668b9::t_c211e11ac126e3 1-44
+server/plan.ts
+  s_2065c5125668b9::t_a78fdbfa7cae51 1-69
+server/power.ts
+  s_5ddfc8f4108175::t_54034f0ad28cd5 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "deaf539322aba54abc33acaa4a47f036e04aed64",
+  "prompts": {},
+  "sessions": {
+    "s_2065c5125668b9": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a11c9e-fbb7-7768-b17a-0b53daf78bb6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    },
+    "s_5ddfc8f4108175": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0fc06-d951-77a8-8358-cd5dae6891bd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
